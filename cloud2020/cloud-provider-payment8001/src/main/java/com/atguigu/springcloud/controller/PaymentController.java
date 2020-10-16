@@ -6,6 +6,7 @@ import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,4 +29,17 @@ public class PaymentController {
             return new CommonResult(500, "fail", null);
         }
 
-    }}
+    }
+
+    @PostMapping(value = "/get/{id}")
+    public CommonResult create(@PathVariable("id") Long id) {
+        Payment payment = paymentService.getPaymentById(id);
+        if (payment != null) {
+            return new CommonResult(200, "success", payment);
+        } else {
+            return new CommonResult(200, "success", "no exist");
+        }
+
+    }
+
+}
