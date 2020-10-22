@@ -1,0 +1,21 @@
+server:
+  port: 6005
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+  instance:
+    instance-id: order6005
+
+spring:
+  application:
+    name: order-consumer-fegin
+
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+
+logging:
+  level:
+    com.atguigu.springcloud.service.OrderService: debug

@@ -4,12 +4,18 @@ package com.atguigu.springcloud.controller;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/payment")
+@Slf4j
 public class PaymentController {
 
     @Autowired
@@ -17,6 +23,12 @@ public class PaymentController {
 
     @Value("${server.port}")
     private String serverPort;
+
+    @Value("${spring.application.name}")
+    private String springApplicationName;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
     @PostMapping(value = "/create")
     public CommonResult create(@RequestBody Payment payment) {
@@ -40,4 +52,21 @@ public class PaymentController {
 
     }
 
+    @GetMapping(value = "/discovery")
+    public Object discovery() {
+        List<String> services = discoveryClient.getServices();
+        for (String service : services) {
+            log.info("service:{}", service);
+        }
+        List<ServiceInstance> instances = discoveryClient.getInstances(springApplicationName);
+        for (ServiceInstance instance : instances) {
+            log.info("host={}, instanceId={}, serviceId={}", instance.getHost(), instance.getInstanceId(), instance.getServiceId());
+        }
+        return this.discoveryClient;
+    }
+
+    @GetMapping(value = "/zk")
+    public String paymentZK() {
+        return "zk port:" + serverPort;
+    }
 }

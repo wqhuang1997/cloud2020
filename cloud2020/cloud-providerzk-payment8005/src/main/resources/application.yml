@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8005
 
 spring:
   application:
@@ -10,14 +10,9 @@ spring:
     url: jdbc:mysql://localhost:3306/db2020?useUnicode=true&characterEncoding=UTF-8&useTimezone=true&serverTimezone=GMT%2B8
     username: root
     password: suntek
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
-  instance:
-    instance-id: payment8001
-    prefer-ip-address: true
