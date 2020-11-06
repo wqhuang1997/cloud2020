@@ -17,6 +17,24 @@
         <module>cloud-providerconsul-payment8007</module>
         <module>cloud-consumerconsul-order6003</module>
         <module>cloud-consumer-openfegin-order6005</module>
+        <module>cloud-provider-hystrix-payment8007</module>
+        <module>cloud-consumer-fegin-hystrix-order6004</module>
+        <module>cloud-consumer-hystrix-dashboard6001</module>
+        <module>cloud-gateway-gateway9527</module>
+        <module>cloud-config-center3344</module>
+        <module>cloud-config-client3355</module>
+        <module>cloud-config-client3366</module>
+        <module>cloud-stream-rabbitmq-provider8801</module>
+        <module>cloud-stream-rabbitmq-consumer8802</module>
+        <module>cloud-stream-rabbitmq-consumer8803</module>
+        <module>cloudalibaba-provider-payment9001</module>
+        <module>cloudalibaba-provider-payment9002</module>
+        <module>cloudalibaba-consumer-order9003</module>
+        <module>cloudalibaba-config-nacos-client3377</module>
+        <module>cloudalibaba-sentinel-service8401</module>
+        <module>seata-order-service2001</module>
+        <module>seata-storage-service2002</module>
+        <module>seata-accout-sevice2003</module>
     </modules>
     <packaging>pom</packaging>  <!-- 统一管理jar包版本 -->
     <properties>

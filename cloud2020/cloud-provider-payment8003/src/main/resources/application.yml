@@ -10,6 +10,11 @@ spring:
     url: jdbc:mysql://localhost:3306/db2020?useUnicode=true&characterEncoding=UTF-8&useTimezone=true&serverTimezone=GMT%2B8
     username: root
     password: suntek
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -17,7 +22,7 @@ mybatis:
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+      defaultZone: http://eureka7001.com:7001/eureka
   instance:
     instance-id: payment8003
     prefer-ip-address: true

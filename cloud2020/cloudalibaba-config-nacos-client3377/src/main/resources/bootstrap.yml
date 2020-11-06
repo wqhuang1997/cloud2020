@@ -1,0 +1,23 @@
+server:
+  port: 3377
+
+spring:
+  application:
+    name: nacos-config-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        namespace: 3323bd02-31e8-4239-987b-a1305d161045
+        ext-config[0]:
+          data-id: ext-config-common01.yaml # 配置集 id
+          refresh: true # 是否支持动态刷新
+        ext-config[1]:
+          data-id: ext-config-common02.yaml # 配置集 id
+          refresh: true # 是否支持动态刷新
+        ext-config[2]:
+          data-id: ext-config-common03.yaml # 配置集 id
+          refresh: true # 是否支持动态刷新

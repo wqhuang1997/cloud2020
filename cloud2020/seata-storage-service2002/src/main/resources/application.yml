@@ -1,0 +1,30 @@
+server:
+  port: 2002
+spring:
+  application:
+    name: seate-storage-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/seata_storage?useUnicode=true&characterEncoding=UTF-8&useTimezone=true&serverTimezone=GMT%2B8
+    username: root
+    password: suntek
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    alibaba:
+      seata:
+        tx-service-group: storageService
+
+logging:
+  level:
+    io:
+      seata: info
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+seata:
+  order: seate-order-service
+  account: seate-account-service
